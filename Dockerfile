@@ -2,7 +2,7 @@
 FROM python:3.12-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    gcc make flex bison \
+    build-essential flex bison \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
