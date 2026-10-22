@@ -199,7 +199,7 @@ async function compileCode() {
   astOutput.textContent = "Processing...";
 
   try {
-    const res = await fetch("/api/compile", {
+   const res = await fetch("https://switchcasecompiler.onrender.com/api/compile", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ code })
