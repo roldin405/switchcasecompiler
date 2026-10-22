@@ -5,7 +5,7 @@ import json
 import os
 import tempfile
 
-PORT = 5000
+PORT = int(os.environ.get("PORT", 5000))
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 COMPILER_BIN = os.path.join(BASE_DIR, "build", "switch_compiler")
 
