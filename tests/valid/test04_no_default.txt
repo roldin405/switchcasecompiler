@@ -1,0 +1,9 @@
+int opt = 2;
+switch (opt) {
+    case 1:
+        print(10);
+        break;
+    case 2:
+        print(20);
+        break;
+}

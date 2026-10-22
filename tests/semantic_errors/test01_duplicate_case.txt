@@ -1,0 +1,9 @@
+int choice = 1;
+switch (choice) {
+    case 1:
+        print(10);
+        break;
+    case 1:
+        print(20);
+        break;
+}

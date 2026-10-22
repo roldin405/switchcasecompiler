@@ -1,0 +1,14 @@
+int code = 3;
+int out = 0;
+switch (code) {
+    case 1:
+        out = 100;
+        break;
+    case 2:
+        out = 200;
+        break;
+    case 3:
+        out = 300;
+        break;
+}
+print(out);

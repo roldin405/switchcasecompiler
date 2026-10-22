@@ -1,0 +1,14 @@
+int a = 1;
+int b = 1;
+
+switch (a) {
+    case 1:
+        print(10);
+        break;
+}
+
+switch (b) {
+    case 1:
+        print(20);
+        break;
+}

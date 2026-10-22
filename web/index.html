@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Switch-Case Mini Compiler | Interactive Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div class="logo-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h1>Switch-Case Mini Compiler</h1>
+          <p class="subtitle"> Compiler Design </p>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="preset-group">
+          <label for="exampleSelect">Examples:</label>
+          <select id="exampleSelect">
+            <option value="demo">Demo (Standard Switch)</option>
+            <option value="single">Single Case & Break</option>
+            <option value="multi">Multiple Cases</option>
+            <option value="expr">Expression Selector</option>
+            <option value="negative">Negative Case Constants</option>
+            <option value="nested">Nested Switch</option>
+            <option value="err_dup">Error: Duplicate Case</option>
+            <option value="err_default">Error: Multiple Defaults</option>
+            <option value="err_break">Error: Break Outside Switch</option>
+            <option value="err_undeclared">Error: Undeclared Variable</option>
+            <option value="err_syntax">Error: Missing Semicolon</option>
+          </select>
+        </div>
+        <button id="compileBtn" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          Compile Code
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="workspace">
+      <!-- Editor Column -->
+      <section class="panel editor-panel">
+        <div class="panel-header">
+          <span class="panel-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            Source Code
+          </span>
+          <span class="badge" id="lineCount">Line 1, Col 1</span>
+        </div>
+        <div class="editor-container">
+          <textarea id="codeInput" spellcheck="false" placeholder="Enter switch-case C code here..."></textarea>
+        </div>
+      </section>
+
+      <!-- Results Column -->
+      <section class="panel output-panel">
+        <div class="panel-header">
+          <span class="panel-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+              <line x1="6" y1="6" x2="6.01" y2="6"></line>
+              <line x1="6" y1="18" x2="6.01" y2="18"></line>
+            </svg>
+            Compiler Output & AST
+          </span>
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="terminal">Terminal Output</button>
+            <button class="tab-btn" data-tab="ast">AST View</button>
+            <button class="tab-btn" data-tab="phases">Pipeline Phases</button>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tabTerminal">
+          <pre id="terminalOutput"
+            class="console-box">Click "Compile Code" or choose an example to view compiler output.</pre>
+        </div>
+
+        <div class="tab-content hidden" id="tabAst">
+          <pre id="astOutput" class="ast-box">No AST available. Compile successfully to generate tree.</pre>
+        </div>
+
+        <div class="tab-content hidden" id="tabPhases">
+          <div class="phases-container">
+            <div class="phase-card" id="phaseLex">
+              <div class="phase-icon">1</div>
+              <div class="phase-info">
+                <h4>Lexical Analysis (Flex)</h4>
+                <p class="phase-status">Pending</p>
+              </div>
+            </div>
+            <div class="phase-card" id="phaseSyn">
+              <div class="phase-icon">2</div>
+              <div class="phase-info">
+                <h4>Syntax Analysis (GNU Bison)</h4>
+                <p class="phase-status">Pending</p>
+              </div>
+            </div>
+            <div class="phase-card" id="phaseAst">
+              <div class="phase-icon">3</div>
+              <div class="phase-info">
+                <h4>AST Construction (C Nodes)</h4>
+                <p class="phase-status">Pending</p>
+              </div>
+            </div>
+            <div class="phase-card" id="phaseSem">
+              <div class="phase-icon">4</div>
+              <div class="phase-info">
+                <h4>Semantic Analysis (Checks & Scope)</h4>
+                <p class="phase-status">Pending</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Status Bar -->
+    <footer class="footer">
+      <div class="footer-left">
+        <span class="status-indicator ready" id="statusDot"></span>
+        <span id="statusText">Ready</span>
+      </div>
+      <div class="footer-right">
+        <span>Backend: <strong>Flex 2.6.4 + Bison 3.8.2 + GCC</strong></span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

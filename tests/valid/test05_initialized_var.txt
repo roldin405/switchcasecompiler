@@ -1,0 +1,6 @@
+int val = 5;
+switch (val) {
+    case 5:
+        print(val);
+        break;
+}

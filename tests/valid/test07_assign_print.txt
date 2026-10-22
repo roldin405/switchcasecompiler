@@ -1,0 +1,10 @@
+int x = 1;
+int y = 0;
+switch (x) {
+    case 1:
+        y = 50;
+        print(y);
+        y = y + 10;
+        print(y);
+        break;
+}

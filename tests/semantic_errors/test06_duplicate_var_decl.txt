@@ -1,0 +1,8 @@
+int dup = 10;
+int dup = 20;
+
+switch (dup) {
+    case 10:
+        print(dup);
+        break;
+}

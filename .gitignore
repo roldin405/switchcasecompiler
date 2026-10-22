@@ -1,0 +1,13 @@
+# Compiler build artifacts and temporary files
+build/
+*.o
+*.output
+*.tab.c
+*.tab.h
+lex.yy.c
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

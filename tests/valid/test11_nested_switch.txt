@@ -1,0 +1,18 @@
+int outer = 1;
+int inner = 2;
+
+switch (outer) {
+    case 1:
+        switch (inner) {
+            case 2:
+                print(200);
+                break;
+            default:
+                print(0);
+                break;
+        }
+        break;
+    default:
+        print(999);
+        break;
+}
